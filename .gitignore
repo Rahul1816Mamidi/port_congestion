@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+# outputs/model.joblib is committed on purpose so reviewers can run the app without training
+.env
+.DS_Store

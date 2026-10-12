@@ -1,0 +1,191 @@
+{
+  "n_total": 450,
+  "n_train": 315,
+  "n_test": 135,
+  "congestion_threshold_h": 12.0,
+  "train_period": [
+    "2025-01-01",
+    "2025-09-29"
+  ],
+  "test_period": [
+    "2025-09-29",
+    "2025-12-31"
+  ],
+  "positive_rate_train": 0.40634920634920635,
+  "positive_rate_test": 0.4074074074074074,
+  "missing_share": {
+    "queue_length": 0.044444444444444446,
+    "avg_wait_prev_7d_h": 0.05555555555555555,
+    "wind_kn": 0.04,
+    "wave_m": 0.04,
+    "storm_flag": 0.04
+  },
+  "models": {
+    "rule (load ratio)": {
+      "roc_auc": 0.8276136363636364,
+      "pr_auc": 0.8111110794689363,
+      "precision": 0.7608695652173914,
+      "recall": 0.6363636363636364,
+      "f1": 0.693069306930693,
+      "alert_rate": 0.34074074074074073
+    },
+    "logistic regression": {
+      "roc_auc": 0.9722727272727273,
+      "pr_auc": 0.9604206159851763,
+      "brier": 0.0688187179960998,
+      "precision": 0.8653846153846154,
+      "recall": 0.8181818181818182,
+      "f1": 0.8411214953271028,
+      "alert_rate": 0.3851851851851852
+    },
+    "gradient boosting (main)": {
+      "roc_auc": 0.9611363636363636,
+      "pr_auc": 0.94864669689684,
+      "brier": 0.08630224716453896,
+      "precision": 0.8301886792452831,
+      "recall": 0.8,
+      "f1": 0.8148148148148148,
+      "alert_rate": 0.3925925925925926
+    }
+  },
+  "brier_constant_baseline": 0.24142773158646177,
+  "main_auc_ci95": [
+    0.9308593993152816,
+    0.9848356641163929
+  ],
+  "thresholds": {
+    "main": 0.4600000000000001,
+    "logreg": 0.44000000000000006,
+    "rule_load_ratio": 1.07
+  },
+  "threshold_tradeoff": {
+    "0.20": {
+      "precision": 0.7936507936507936,
+      "recall": 0.9090909090909091,
+      "f1": 0.847457627118644,
+      "alert_rate": 0.4666666666666667
+    },
+    "0.30": {
+      "precision": 0.8,
+      "recall": 0.8727272727272727,
+      "f1": 0.8347826086956521,
+      "alert_rate": 0.4444444444444444
+    },
+    "0.40": {
+      "precision": 0.8214285714285714,
+      "recall": 0.8363636363636363,
+      "f1": 0.8288288288288288,
+      "alert_rate": 0.4148148148148148
+    },
+    "0.50": {
+      "precision": 0.8431372549019608,
+      "recall": 0.7818181818181819,
+      "f1": 0.8113207547169812,
+      "alert_rate": 0.37777777777777777
+    },
+    "0.60": {
+      "precision": 0.9130434782608695,
+      "recall": 0.7636363636363637,
+      "f1": 0.8316831683168316,
+      "alert_rate": 0.34074074074074073
+    },
+    "0.70": {
+      "precision": 0.9318181818181818,
+      "recall": 0.7454545454545455,
+      "f1": 0.8282828282828283,
+      "alert_rate": 0.32592592592592595
+    }
+  },
+  "ablation_no_live_state": {
+    "features_dropped": [
+      "queue_length",
+      "berth_utilization",
+      "avg_wait_prev_7d_h",
+      "arrivals_last_24h",
+      "throughput_prev_7d",
+      "demand_capacity_ratio"
+    ],
+    "roc_auc": 0.5740909090909091,
+    "pr_auc": 0.4672315117019461,
+    "brier": 0.23892863396437106
+  },
+  "calibration": {
+    "ece_main": 0.08537853997011695,
+    "ece_logreg": 0.04480753559142122
+  },
+  "confidence_buckets": {
+    "High": {
+      "n": 96,
+      "accuracy": 1.0,
+      "brier": 0.0016803100588328736
+    },
+    "Medium": {
+      "n": 18,
+      "accuracy": 0.4444444444444444,
+      "brier": 0.3873148773112154
+    },
+    "Low": {
+      "n": 21,
+      "accuracy": 0.5238095238095238,
+      "brier": 0.21513456237918688
+    }
+  },
+  "out_of_range_share_test": 0.0,
+  "per_port": {
+    "PORT_A": {
+      "n": 29,
+      "positive_rate": 0.6206896551724138,
+      "roc_auc": 0.9949494949494949,
+      "recall_at_alert": 1.0
+    },
+    "PORT_B": {
+      "n": 23,
+      "positive_rate": 0.34782608695652173,
+      "roc_auc": 0.9416666666666668,
+      "recall_at_alert": 0.75
+    },
+    "PORT_C": {
+      "n": 24,
+      "positive_rate": 0.4166666666666667,
+      "roc_auc": 0.9214285714285714,
+      "recall_at_alert": 0.6
+    },
+    "PORT_D": {
+      "n": 26,
+      "positive_rate": 0.11538461538461539,
+      "roc_auc": 1.0,
+      "recall_at_alert": 1.0
+    },
+    "PORT_E": {
+      "n": 33,
+      "positive_rate": 0.48484848484848486,
+      "roc_auc": 0.9595588235294117,
+      "recall_at_alert": 0.6875
+    }
+  },
+  "robustness_20pct_extra_missing": {
+    "roc_auc_mean": 0.945310606060606,
+    "roc_auc_min": 0.9240909090909091
+  },
+  "global_importance_features": {
+    "vessels already queued": 2.6161230747583377,
+    "berth utilisation": 1.0193821180231128,
+    "(queue + arrivals) per berth": 0.4157692598960515,
+    "avg wait, last 7 days (h)": 0.39661812265354973,
+    "month": 0.36359066920711536,
+    "vessel size (TEU)": 0.2246929819809922,
+    "vessels arrived in last 24h": 0.17752872713561338,
+    "vessels due in next 24h": 0.17582297852391973
+  },
+  "global_importance_groups": {
+    "Berth pressure (demand vs capacity)": 3.4974220879011364,
+    "Timing and seasonality": 0.4160325097890427,
+    "Recent port performance": 0.37982954538742564,
+    "Weather": 0.2555784808037212,
+    "Vessel and port characteristics": 0.2126794656298524
+  },
+  "example_row": {
+    "call_id": "C0332",
+    "port": "PORT_A"
+  }
+}
